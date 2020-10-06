@@ -57,7 +57,10 @@ function $ToChildren($?: any[]): Component[] {
 
     if ($ != null) {
         $.forEach(subComp => {
-            if (typeof subComp == 'object') {
+            if(subComp instanceof Component){
+                children.push(subComp);
+            }
+            else if (typeof subComp == 'object') {
                 var newChilds = Object.keys(subComp)
                     .map<Component>(key => {
                         if (getComponent(key) != null) {

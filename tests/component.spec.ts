@@ -21,12 +21,12 @@ it("should render some HTML", () => {
 });
 
 it("should add a custom component", () => {
-  function TestComp(component: ComponentParams): ProtoComponent {
+  function TestComp(params: ComponentParams): ProtoComponent {
     return {
       $: [
         {
           P: {
-            $: [component.params.text],
+            $: [params.params.text],
           },
         }
       ]
@@ -48,4 +48,43 @@ it("should add a custom component", () => {
   });
 
   expect(html).toEqual("<p>Test</p>");
+});
+
+it('should also add params children', () => {
+  function GlorifiedDiv(params: ComponentParams): ProtoComponent {
+    return {
+      $: [
+        {
+          Div: {
+            $: [
+              ...params.children
+            ]
+          }
+        }
+      ]
+    };
+  }
+  addComponents({ GlorifiedDiv: GlorifiedDiv });
+  expect(getComponent("GlorifiedDiv")).toBeDefined();
+
+  var html = Objectable.render({
+    $: [
+      {
+        GlorifiedDiv: {
+         $: [
+          {
+            H1: {
+              $: ['Title']
+            },
+            H2: {
+              $: ['Title2']
+            }
+          }
+         ]
+        },
+      },
+    ],
+  });
+
+  expect(html).toEqual("<div><h1>Title</h1><h2>Title2</h2></div>");
 });
