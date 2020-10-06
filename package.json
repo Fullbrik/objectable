@@ -1,6 +1,6 @@
 {
   "name": "objectable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A new way to create websites",
   "main": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
@@ -10,7 +10,8 @@
   },
   "scripts": {
     "test": "jest",
-    "build": "webpack"
+    "build": "webpack",
+    "prepare": "npm run build"
   },
   "keywords": [
     "object",

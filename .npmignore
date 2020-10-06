@@ -1,0 +1,7 @@
+src
+tests
+webpack.config.js
+tsconfig.json
+jest.config.js
+examples
+.vscode
