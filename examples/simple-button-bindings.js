@@ -12,7 +12,7 @@ document.getElementById("content").innerHTML = Objectable.render({
 				$: [
 					{
 						H1: {
-							$: ["Simple Bindings"],
+							$: ["Simple Bindings. Note: these don't work yet because I need to make the virtual DOM."],
 						},
 					},
 				],
