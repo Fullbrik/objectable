@@ -1,5 +1,7 @@
 import { addComponents, Component, ProtoComponent } from "./component";
-import { AddPropTransform } from './html';
+import { AddPropTransform } from './html'; 
+
+export {ProtoComponentParams, ProtoComponent, ComponentParams, Component} from './component';
 
 export var Objectable = {
   render: (component: ProtoComponent) => {
