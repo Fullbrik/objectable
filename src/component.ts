@@ -20,6 +20,8 @@ export function getComponent(name: string): (component: ComponentParams) => Prot
     return Components[name] ?? null;
 }
 
+export var AdditionalParams : any = {};
+
 export interface ProtoComponentParams {
     $?: any[];
     params?: any;
@@ -28,7 +30,9 @@ export interface ProtoComponentParams {
 export class ComponentParams {
     constructor(proto: ProtoComponentParams) {
         this.children = $ToChildren(proto.$ ?? []);
+        
         this.params = proto.params ?? {};
+        this.params = Object.assign(this.params, AdditionalParams);
     }
 
     children: Component[] = [];

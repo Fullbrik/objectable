@@ -1,4 +1,4 @@
-import { addComponents, Component, ProtoComponent } from "./component";
+import { addComponents, AdditionalParams, Component, ProtoComponent } from "./component";
 import { AddPropTransform } from './html'; 
 
 export {ProtoComponentParams, ProtoComponent, ComponentParams, Component} from './component';
@@ -9,6 +9,7 @@ export var Objectable = {
     return comp.render(comp);
   },
   addComponents: addComponents,
+  additionalParams: AdditionalParams,
   component: function (name?: string) {
     return function (
       target: any,
@@ -18,7 +19,7 @@ export var Objectable = {
       addComponents({ [name ?? propertyKey]: target });
     };
   },
-  addHTMLPropertyTransform: AddPropTransform
+  addHTMLPropertyTransform: AddPropTransform,
 };
 
 // module.exports = Objectable;

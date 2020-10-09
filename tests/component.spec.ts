@@ -71,20 +71,45 @@ it('should also add params children', () => {
     $: [
       {
         GlorifiedDiv: {
-         $: [
-          {
-            H1: {
-              $: ['Title']
-            },
-            H2: {
-              $: ['Title2']
+          $: [
+            {
+              H1: {
+                $: ['Title']
+              },
+              H2: {
+                $: ['Title2']
+              }
             }
-          }
-         ]
+          ]
         },
       },
     ],
   });
 
   expect(html).toEqual("<div><h1>Title</h1><h2>Title2</h2></div>");
+});
+
+it('should have additional params', () => {
+  Objectable.additionalParams.MyParam = 'My Param';
+
+  function MyH1Component(params: ComponentParams): ProtoComponent {
+    return {
+      $: [{
+        H1: {
+          $: [params.params.MyParam]
+        }
+      }]
+    }
+  }
+  Objectable.addComponents({MyH1: MyH1Component});
+
+  var html = Objectable.render({
+    $: [
+      {
+        MyH1: {}
+      },
+    ],
+  });
+
+  expect(html).toEqual('<h1>My Param</h1>');
 });
