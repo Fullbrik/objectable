@@ -5,7 +5,7 @@ export {ProtoComponentParams, ProtoComponent, ComponentParams, Component} from '
 
 export var Objectable = {
   render: (component: ProtoComponent) => {
-    var comp = new Component(component);
+    var comp = new Component(component, 'Root');
     return comp.render(comp);
   },
   addComponents: addComponents,
