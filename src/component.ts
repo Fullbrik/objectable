@@ -45,14 +45,28 @@ export interface ProtoComponent {
 }
 
 export class Component {
-    constructor(proto: ProtoComponent) {
+    constructor(proto: ProtoComponent, name: string) {
         this.children = $ToChildren(proto.$ ?? []);
         if (proto.render != null) this.render = proto.render;
+        this.name = name?? '';
     }
 
     children: Component[] = [];
+    name: string = '';
     render: (component: Component) => string = function (component) {
         return (component.children ?? []).map(child => child.render(child)).join('');
+    }
+
+    getComponentOfName(name: string, recursive: boolean): Component[] {
+        var comps = this.children.filter(comp => comp.name === name);
+
+        if(recursive){
+            var childComps = Array<Component>().concat(...this.children.map(child => child.getComponentOfName(name, recursive)));
+
+            comps = comps.concat(comps, childComps);
+        }
+
+        return comps;
     }
 }
 
@@ -69,7 +83,7 @@ function $ToChildren($?: any[]): Component[] {
                     .map<Component>(key => {
                         if (getComponent(key) != null) {
                             //Convert ComponentParams to a Component.
-                            return new Component(getComponent(key)(new ComponentParams(<ProtoComponentParams>subComp[key])) ?? {});
+                            return new Component(getComponent(key)(new ComponentParams(<ProtoComponentParams>subComp[key])) ?? {}, key);
                         }
                         else {
                             throw `Component of type ${key} not be found.`;
@@ -90,5 +104,5 @@ function $ToChildren($?: any[]): Component[] {
 function EmbedText(text: string): Component {
     return new Component({
         render: (component) => text
-    });
+    }, 'Text');
 }
