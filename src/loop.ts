@@ -8,6 +8,8 @@ export function LoopComponent(component: ComponentParams): ProtoComponent {
     var first = component.params.first ?? -1;
     var last = component.params.last ?? Number.MAX_VALUE;
 
+    var tags = ["Templating", "Loop"];
+
     if (array == null) {
         array = [];
         for (let i = 0; i <= last; i++) {
@@ -33,6 +35,7 @@ export function LoopComponent(component: ComponentParams): ProtoComponent {
     });
 
     return {
-        $: components
+        $: components,
+        tags: tags
     };
 }

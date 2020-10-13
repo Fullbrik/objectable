@@ -41,17 +41,21 @@ export class ComponentParams {
 
 export interface ProtoComponent {
     $?: any[];
+    tags?: any[],
     render?: (component: Component) => string;
 }
 
 export class Component {
     constructor(proto: ProtoComponent, name: string) {
         this.children = $ToChildren(proto.$ ?? []);
+        this.tags = proto.tags ?? [];
+        
         if (proto.render != null) this.render = proto.render;
         this.name = name?? '';
     }
 
     children: Component[] = [];
+    tags: any[];
     name: string = '';
     render: (component: Component) => string = function (component) {
         return (component.children ?? []).map(child => child.render(child)).join('');

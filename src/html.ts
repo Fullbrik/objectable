@@ -54,6 +54,13 @@ export function HTMLElement(element: string) {
 					return "";
 				}
 			},
+			tags: [
+				"HTML",
+				{
+					element: element,
+					id: params.params.id ?? "",
+				},
+			],
 		};
 	};
 }
@@ -136,9 +143,9 @@ function getProp(component: any, prop: string, addItem: addFunc): string {
 function getClass(className: string, classNames: string[]): string {
 	if (className == null) className = "";
 
-    var classNamesCombined = classNames.join(" ").trim();
+	var classNamesCombined = classNames.join(" ").trim();
 
-    if(classNamesCombined.length > 0) className += " " + classNamesCombined
+	if (classNamesCombined.length > 0) className += " " + classNamesCombined;
 
 	if (className.trim().length <= 0) return "";
 	else return ` class="${className.trim()}"`;

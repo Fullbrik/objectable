@@ -56,6 +56,15 @@ it("should add a custom component", () => {
 	expect(html).toEqual("<p>Test</p>");
 });
 
+it('should have tags', () => {
+	var comp = new Component({
+		$: [],
+		tags: ["You're it"]
+	}, 'Root');
+
+	expect(comp.tags).toEqual(["You're it"]);
+})
+
 it("should also add params children", () => {
 	function GlorifiedDiv(params: ComponentParams): ProtoComponent {
 		return {

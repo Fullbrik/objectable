@@ -5,6 +5,8 @@ export function IfComponent(component: ComponentParams) : ProtoComponent {
     var thenFunc = component.params.then;
     var elseFunc = component.params.else;
 
+    var tags = ["Templating", "If", ifCondition];
+
     if (ifCondition) {
         if (thenFunc != null) {
             var thenResult: [string, any] = thenFunc();
@@ -13,7 +15,8 @@ export function IfComponent(component: ComponentParams) : ProtoComponent {
                     {
                         [thenResult[0]]: thenResult[1]
                     }
-                ]
+                ],
+                tags: tags
             };
         }
         else{
@@ -28,7 +31,8 @@ export function IfComponent(component: ComponentParams) : ProtoComponent {
                     {
                         [elseResult[0]]: elseResult[1]
                     }
-                ]
+                ],
+                tags: tags
             };
         }
         else{
