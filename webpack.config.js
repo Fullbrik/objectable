@@ -17,7 +17,7 @@ module.exports = {
   output: {
     filename: "index.js",
     path: path.resolve('./dist'),
-    library: '',
-    libraryTarget: 'this'
+    library: 'Objectable',
+    libraryTarget: 'var'
   },
 };

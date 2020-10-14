@@ -3,7 +3,7 @@ import { AddPropTransform } from './html';
 
 export {ProtoComponentParams, ProtoComponent, ComponentParams, Component} from './component';
 
-export var Objectable = {
+module.exports = {
   render: (component: ProtoComponent) => {
     var comp = new Component(component, 'Root');
     return comp.render(comp);
