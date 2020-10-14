@@ -9,4 +9,6 @@ Features include:
 
 You can check the examples folder for examples on how to use these features.
 
+Note: If you want features like event binding, and simple DOM changing, check out objectableDOM: https://github.com/Fullbrik/objectableDOM
+
 Note: This package is still in beta.
