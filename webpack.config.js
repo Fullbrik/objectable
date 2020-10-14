@@ -18,6 +18,6 @@ module.exports = {
     filename: "index.js",
     path: path.resolve('./dist'),
     library: 'Objectable',
-    libraryTarget: 'var'
+    libraryTarget: 'umd'
   },
 };
