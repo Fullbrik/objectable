@@ -1,4 +1,4 @@
-import { Objectable } from "../src";
+var Objectable = require("../src");
 
 it("should loop components", () => {
 	var names = ["mcp613", "john", "james"];

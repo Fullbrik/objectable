@@ -1,4 +1,4 @@
-import { Objectable } from "../src";
+var Objectable = require("../src");
 
 it('should check to exclude', () => {
     var html = Objectable.render({

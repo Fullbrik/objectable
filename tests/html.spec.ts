@@ -1,4 +1,4 @@
-import { Objectable } from "../src";
+var Objectable = require("../src");
 import { getComponent } from "../src/component";
 import { HTMLElements } from "../src/html";
 
@@ -61,7 +61,7 @@ it("should have some props", () => {
 });
 
 it('should transform props', () => {
-	Objectable.addHTMLPropertyTransform((name, prop, add) => {
+	Objectable.addHTMLPropertyTransform((name: string, prop: any, add: (type: string, item: string) => void) => {
 		if(name === 'newProp'){
 			if(prop)
 				add('class', 'my-class');
@@ -72,7 +72,7 @@ it('should transform props', () => {
 		}
 	});
 
-	Objectable.addHTMLPropertyTransform((name, prop, add) => {
+	Objectable.addHTMLPropertyTransform((name: string, prop: any, add: (type: string, item: string) => void) => {
 		if(name === 'myColor' && typeof prop === 'string'){
 				add('style', `color: ${prop}`);
 			return '';

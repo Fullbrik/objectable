@@ -1,4 +1,4 @@
-import { Objectable } from "../src";
+var Objectable = require("../src");
 import {
 	getComponent,
 	addComponents,
