@@ -67,7 +67,7 @@ export class Component {
         if(recursive){
             var childComps = Array<Component>().concat(...this.children.map(child => child.getComponentOfName(name, recursive)));
 
-            comps = comps.concat(comps, childComps);
+            comps = comps.concat(childComps);
         }
 
         return comps;

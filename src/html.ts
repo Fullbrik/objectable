@@ -36,9 +36,12 @@ export function HTMLElement(element: string) {
 		}
 
 		return {
+			$: [
+				...params.children
+			],
 			render: (component) => {
 				if (params != null && params.children != null) {
-					var childRenders = params.children
+					var childRenders = component.children
 						.map((child) => {
 							if (child.render != null) return child.render(child);
 							else return "";
