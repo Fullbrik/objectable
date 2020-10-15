@@ -1,6 +1,6 @@
 {
   "name": "objectable",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "A new way to create websites",
   "main": "./dist/index.js",
   "types": "./dist/types/index.d.ts",
