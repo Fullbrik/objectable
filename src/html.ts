@@ -36,9 +36,7 @@ export function HTMLElement(element: string) {
 		}
 
 		return {
-			$: [
-				...params.children
-			],
+			$: [...params.children],
 			render: (component) => {
 				if (params != null && params.children != null) {
 					var childRenders = component.children
@@ -57,13 +55,10 @@ export function HTMLElement(element: string) {
 					return "";
 				}
 			},
-			tags: [
-				"HTML",
-				{
-					element: element,
-					id: params.params.id ?? "",
-				},
-			],
+			tags: {
+				element: element,
+				id: params.params.id ?? "",
+			},
 		};
 	};
 }

@@ -59,10 +59,10 @@ it("should add a custom component", () => {
 it('should have tags', () => {
 	var comp = new Component({
 		$: [],
-		tags: ["You're it"]
+		tags: "You're it"
 	}, 'Root');
 
-	expect(comp.tags).toEqual(["You're it"]);
+	expect(comp.tags).toEqual("You're it");
 })
 
 it("should also add params children", () => {

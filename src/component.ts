@@ -41,7 +41,7 @@ export class ComponentParams {
 
 export interface ProtoComponent {
     $?: any[];
-    tags?: any[],
+    tags?: any,
     render?: (component: Component) => string;
 }
 
@@ -55,7 +55,7 @@ export class Component {
     }
 
     children: Component[] = [];
-    tags: any[];
+    tags: any;
     name: string = '';
     render: (component: Component) => string = function (component) {
         return (component.children ?? []).map(child => child.render(child)).join('');
